@@ -1,5 +1,5 @@
 # How to Auto-Deploy Bikeshed Specs
-Domenic Denicola has written a nice gist on how to auto-deploy built products to gh-pages using Travis.  You should read that first and the comments, because the gist is missing a few items.  The gist is fairly generic; we focus here on how to use it to automatically generate the HTML version of your spec using bikeshed.
+Domenic Denicola has written a nice gist on [how to auto-deploy built products](https://gist.github.com/domenic/ec8b0fc8ab45f39403dd) to gh-pages using Travis.  You should read that first and the comments, because the gist is missing a few items.  The gist is fairly generic; we focus here on how to use it to automatically generate the HTML version of your spec using [bikeshed](https://github.com/tabatkins/bikeshed).
 
 
 ## Initial Setup
@@ -34,9 +34,9 @@ This script assumes that bikeshed produces no errors when converting the spec.  
 If your spec actually has errors you may need a more complicated script that compares the actual bikeshed errors with an expected list of errors.  See https://github.com/WebAudio/web-audio-api/blob/master/compile.sh for one possibility.
 
 ## Create a Deploy Script
-Here you can basically copy the script from the gist, or use the one from cookie-store or web audio. Name it deploy.sh. Note that, since bikeshed always appears to change index.html on every run, you’ll end up deploying a new index.html for any change you make on the master branch.
+Here you can basically copy the script from [the gist](https://gist.github.com/domenic/ec8b0fc8ab45f39403dd), or use the one from [cookie-store](https://github.com/WICG/cookie-store/blob/master/deploy.sh) or [web audio](https://github.com/WebAudio/web-audio-api/blob/master/deploy.sh). Name it `deploy.sh`. Note that, since bikeshed always appears to change `index.html` on every run, you’ll end up deploying a new `index.html` for any change you make on the master branch.
 
-## Create Your .travis.yml File
+## Create Your `.travis.yml` File
 It should look something like this:
 ```
 language: python
@@ -63,7 +63,7 @@ This sets up Travis to include python 2.7 so we can run bikeshed.  The install s
 The ENCRYPTION_LABEL will be set up below.  The COMMIT_AUTHOR_EMAIL is the email address that git will use when committing changes.  Any address can be used here, but it’s probably nice to have it be a real address such as the working group address.
 
 ## Setting Up Travis
-Follow the directions in the gist for setting up Travis. You will also need the travis client installed locally. On linux, you can do:
+Follow the directions in [the gist](https://gist.github.com/domenic/ec8b0fc8ab45f39403dd) for setting up Travis. You will also need the travis client installed locally. On linux, you can do:
 ```
 sudo apt install ruby ruby-dev
 sudo gem install travis
@@ -72,7 +72,7 @@ sudo gem install travis
 
 ## Create Encrypted Credentials
 Follow the instructions in the gist for getting encrypted credentials, summarized here:
-Generate a new SSH key.  When asked for the file to save the key, use “deploy_key”. Be sure not to include a pass phrase (i.e. press enter when asked for one.)  
+[Generate a new SSH key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).  When asked for the file to save the key, use “deploy_key”. Be sure not to include a pass phrase (i.e. press enter when asked for one.)  
 Add the public key (in “deploy_key.pub”) as a deploy key in your repository  https://github.com/<proj-name>/<repo-name>/settings/keys).  You MUST be an admin to do this, or have an admin do these steps for you.
 Choose an appropriate title
 Paste the contents of “deploy_key.pub”
