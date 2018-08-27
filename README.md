@@ -161,7 +161,7 @@ Now would be a good time to remove all of the unneeded files:
 * `gh-pages` branch:
    * Remove `index.bs` if present
 
-If you have a README.md file, you may want to [add a badge](https://docs.travis-ci.com/user/status-images/) to show the status of the build.  To check your builds, visit https://travis-ci.org/<project>/<repo>.  There will be a badge showing the status of the build.  Click it to get a dialog box that has options on what format you want to use.  Select markdown if you want to add it to your README.md file.  Copy the link and place it in your README.md file at an appropriate place.  This also makes it easy to navigate directly to builds to see what’s happening or why the build is not passing.
+If you have a `README.md` file, you may want to [add a badge](https://docs.travis-ci.com/user/status-images/) to show the status of the build.  To check your builds, visit `https://travis-ci.org/<project>/<repo>`.  There will be a badge showing the status of the build.  Click it to get a dialog box that has options on what format you want to use.  Select markdown if you want to add it to your `README.md` file.  Copy the link and place it in your `README.md` file at an appropriate place.  This also makes it easy to navigate directly to builds to see what’s happening or why the build is not passing.
 
 ## Debugging
-Of course, nothing ever goes as planned, so you might need to figure out what’s happening.  The compile.sh script includes “set -x” to show each command that is run.  You can do the same for deploy.sh to see why it’s failing.
+Of course, nothing ever goes as planned, so you might need to figure out what’s happening.  The `compile.sh` script includes `set -x` to show each command that is run.  You can do the same for `deploy.sh` to see why it’s failing.
