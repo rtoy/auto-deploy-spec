@@ -74,15 +74,15 @@ This sets up Travis to include python 2.7 so we can run bikeshed.  The install s
 1. Create a file named `.travis.yml`
 1. Add it to your repo: `git add .travis.yml`
 
-The COMMIT_AUTHOR_EMAIL is the email address that git will use when committing changes.  Any address can be used here, but it’s probably nice to have it be a real address such as the working group address.
+The `COMMIT_AUTHOR_EMAIL` is the email address that git will use when committing changes.  Any address can be used here, but it’s probably nice to have it be a real address such as the working group address.
 
-The ENCRYPTION_LABEL will be set up below.
+The `ENCRYPTION_LABEL` will be set up below.
 
 ## Setting Up Travis
 Follow the directions in [the gist](https://gist.github.com/domenic/ec8b0fc8ab45f39403dd) for setting up Travis. 
 
 1. Go to https://travis-ci.org/
-1. Next to "My repositories", click the **+** button
+1. Next to **My repositories**, click the **+** button
 1. Click on your username or the organization (e.g. WHATWG, WICG, etc) that owns the repo.
 1. Find the repo in the list, and click the switch to enable Travis for it.
 
@@ -96,7 +96,7 @@ Follow the instructions in the gist for getting encrypted credentials, summarize
 
 1. [Generate a new SSH key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).  
     1. `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
-    1. At the "Enter a file..." prompt, use: `deploy_key`
+    1. At the **Enter a file...** prompt, use: `deploy_key`
     1. At the passphrase prompts, just hit Enter for no passphrase (twice).
 1. Add the public key (in `deploy_key.pub`) as a deploy key in your repository:
     1. Go to `https://github.com/<proj-name>/<repo-name>/settings/keys` (You MUST be an admin to do this, or have an admin do these steps for you.)
@@ -127,18 +127,18 @@ As a sanity check, run `git status` &mdash; you should have these new files stag
 1. Commit these changes: `git commit -a -m "Prepare master branch for automatic build and deploy"`
 1. Publish the changes: `git push -f origin master`
 
-If it doesn't already exist, set up a `gh-pages` branch:
+If it doesn't already exist, set up a `gh-pages` branch. (The `deploy.sh` script will create one automatically, but doing it manually here will let us get everything set up correctly on GitHub in the following steps.)
 
 1. `git checkout -b gh-pages`
 1. `git push -f origin gh-pages`
 
-Now you need to change your default branch and setup github pages.
+Now you need to change your default branch and set up GitHub pages.
 
-1. Go to repo settings on GitHub: `https://github.com/<proj-name>/<repo-name>/settings`.
-1. On the "Options" page, scroll down to find "GitHub Pages" section and set the source to be "gh-pages branch".
-1. On the "Branches" page, set the default branch to "master".
+1. Go to the repo's settings on GitHub: `https://github.com/<proj-name>/<repo-name>/settings`.
+1. On the **Options** page, scroll down to find **GitHub Pages** section and set the source to be "gh-pages branch".
+1. On the **Branches** page, set the default branch to "master".
 
-Next, checkout your gh-pages branch, and change `.travis.yml` to be:
+Next, checkout your `gh-pages` branch, and change `.travis.yml` to be:
 
 ```yml
 # For the gh-pages branch, we don't need anything special except to
