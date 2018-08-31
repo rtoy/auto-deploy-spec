@@ -108,12 +108,12 @@ Follow the instructions in the gist for getting encrypted credentials, summarize
     1. `travis login --org` (and log in with github credentials, including 2FA)
     1. `travis encrypt-file deploy_key`
     1. You don’t need to do any of the suggested items, but make a note of the openssl comment; it contains the encryption label that you need to add to `.travis.yml`.  For example, you might see something like:
-```
-    openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_key ...
-```
+        ```
+        openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_key ...
+        ```
     1. Add the encrypted file to the repo: `git add deploy_key.enc`
     1. Delete the key: `rm deploy_key` (don't check it in!)
-1. Update `.travis.yml` by setting `ENCRYPTION_LABEL` with the encryption label printed when you encrypted the deploy key above. In the example, the encryption label from the openssl command is `0a6446eb3ae3`.
+    1. Update `.travis.yml` by setting `ENCRYPTION_LABEL` with the encryption label printed when you encrypted the deploy key above. In the example, the encryption label from the openssl command is `0a6446eb3ae3`.
 
 ## Finishing Up
 
@@ -149,7 +149,7 @@ branches:
   only:
     - gh-pages
 ```
-
+ 
 ## Test It Out
 At this point, everything should be setup and when you make a change on the master branch and push it to your repository, Travis should run and automatically deploy index.html to the gh-pages branch.
 
